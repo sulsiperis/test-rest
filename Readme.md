@@ -1,5 +1,5 @@
 ************************************
-* Simple REST api test for netlify *
+* Simple REST api test for netlify 
 ************************************
 
 instructions:
@@ -19,6 +19,8 @@ if it doesn't work, split installing into parts:
 
 3.create functions directory in the root and create api.js file for example:
 
+
+```javascript
 import express, { Router } from "express";
 import serverless from "serverless-http";
 
@@ -31,25 +33,30 @@ router.get("/hello", (req, res) => res.send("Hello World!"));
 api.use("/.netlify/functions/api/", router);
 
 export const handler = serverless(api);
+```
 
-4. In root create dir dist with empty index.html fiel inside
+4. In root create dir dist with empty index.html file.
 
 5. In root create netlify config file netlify.toml with this line:
 
+```
 [build]
   functions = "functions"
+```
 
-6. in packages.json add or edit this line so it looks like this:
+6. In packages.json add or edit this line so it look like this:
 
+```javascript
 "scripts": {
     "build": "netlify deploy --prod"
-  }
+}
+```
 
-7. now in console run this:
+7. Now, run this in console:
 
 >npm run build
 
-it will ask to connect with netlify and ask to create new project. Fill all the info and when it will ask for publish directory:
+if might ask to login to your netlify account and project detais. Fill all the info as preferred and when asked for publish directory:
 
 >Please provide a publish directory (e.g. "public" or "dist" or "."):
 
